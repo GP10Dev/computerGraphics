@@ -6,7 +6,6 @@ void init() {
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);	//Line C
 	glutInitWindowSize(640,480);
 	glutInitWindowPosition(10,10);
-//	glutCreateWindow("My Shapes");
 }
 
 void display() {
@@ -17,18 +16,13 @@ void display() {
 	glColor3f(1.0,0.0,0.0);
 	glVertex2f(-0.5, -0.5);
 	glColor3f(0.0,1.0,0.0);
+	glClear(GL_COLOR_BUFFER_BIT);
 	glVertex2f(0.5, -0.5);
-	glColor3f(0.0,0.0,1.0);
+	//glColor3f(0.0,0.0,1.0);
+	glColor3ub(1.0,2.50,20.8);
+	
 	glVertex2f(0.0, 0.5);
 	glEnd();
-//	glBegin(GL_POLYGON);
-//		glColor3f(0.0,0.0,1.0);
-//		glVertex2f(0.0, 0.5);
-////		glColor3f(0.0,1.0,0.0);
-//		glVertex2f(0.5, -0.5);
-////		glColor3f(1.0,0.0,0.0);
-//		glVertex2f(0.0, 0.5);
-//	glEnd();
 	glFlush();
 }
 
