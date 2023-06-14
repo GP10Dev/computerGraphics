@@ -51,7 +51,7 @@ def keyboard(key, x, y):
         glutPostRedisplay()
     if key == b'n' or key == b'N':
         glMatrixMode(GL_MODELVIEW)
-        # glLoadIdentity()
+        glLoadIdentity()
         glTranslate(-0.5, -0.5, 1.0)
         glutPostRedisplay()
 
