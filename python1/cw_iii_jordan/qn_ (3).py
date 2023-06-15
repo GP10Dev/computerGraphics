@@ -30,13 +30,17 @@ def clear_color():
 
 def rotate_line():
     glRotatef(45.0, 0.0, 0.0, 1.0)
-    glutPostRedisplay()
+    # glutPostRedisplay()
 
 def scale_line():
     glScalef(2.0, 2.0, 1.0)
 
+# function to translate the line
 def translate_line():
-    glTranslatef(1.0, 1.0, 0.0)
+    glMatrixMode(GL_MODELVIEW)
+    glTranslatef(0.5, 0.5, -1.0)
+    # glutPostRedisplay()
+    glutSwapBuffers()
 
 def display():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -125,21 +129,21 @@ def draw_clipped_line(x1, y1, x2, y2):
 
 
 def menu_options(option):
-    if option == 1:
+    if option == 6:
         clear_screen()
-    elif option == 2:
+    elif option == 7:
         clear_color()
-    elif option == 41:
+    elif option == 4:
         display_line()
-    elif option == 421:
+    elif option == 1:
         rotate_line()
-    elif option == 422:
+    elif option == 2:
         scale_line()
-    elif option == 423:
-        translate_line()
-    elif option == 43:
-        clip_line()
     elif option == 3:
+        translate_line()
+    elif option == 5:
+        clip_line()
+    elif option == 8:
         sys.exit()
         return None
     
@@ -155,21 +159,21 @@ def main():
     
     # Create submenus
     transform_line_menu = glutCreateMenu(menu_options)
-    glutAddMenuEntry("Rotate Line", 421)
-    glutAddMenuEntry("Scale Line", 422)
-    glutAddMenuEntry("Translate Line", 423)
+    glutAddMenuEntry("Rotate Line", 1)
+    glutAddMenuEntry("Scale Line", 2)
+    glutAddMenuEntry("Translate Line", 3)
     
     draw_menu = glutCreateMenu(menu_options)
-    glutAddMenuEntry("Display Line", 41)
+    glutAddMenuEntry("Display Line", 4)
     glutAddSubMenu("Transform Line", transform_line_menu)
-    glutAddMenuEntry("Clip Line", 43)
+    glutAddMenuEntry("Clip Line", 5)
     
     # Create the main menu
     main_menu = glutCreateMenu(menu_options)
-    glutAddMenuEntry("Clear Screen", 1)
-    glutAddMenuEntry("Clear Color", 2)
+    glutAddMenuEntry("Clear Screen", 6)
+    glutAddMenuEntry("Clear Color", 7)
     glutAddSubMenu("Draw Objects", draw_menu)
-    glutAddMenuEntry("Exit", 3)
+    glutAddMenuEntry("Exit", 8)
     
     # Attach the main menu to the left mouse button
     glutAttachMenu(GLUT_LEFT_BUTTON)

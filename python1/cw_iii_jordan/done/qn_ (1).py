@@ -45,21 +45,21 @@ def display():
 
 def menu_options(option):
     global shape
-    if option == 11:
+    if option == 21:
         shape = "p"
         glutPostRedisplay()
-    if option == 12:
+    if option == 22:
         shape = "l"
         glutPostRedisplay()
-    elif option == 13:
+    elif option == 23:
         shape = "pl"
         glutPostRedisplay()
-    elif option == 21:
-        pass
-    elif option == 22:
-        pass
-    elif option == 23:
-        pass
+    elif option == 11:
+        draw_point()
+    elif option == 12:
+        draw_line()
+    elif option == 13:
+        draw_polygon()
 
 
 
