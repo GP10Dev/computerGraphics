@@ -47,7 +47,9 @@ def scale_polygon():
     glutPostRedisplay()
 
 def translate_polygon():
-    glTranslatef(-0.3, -0.7, 0.0)
+    print("translate")
+    glMatrixMode(GL_MODELVIEW)
+    glTranslate(0.5,0,0) # translate by 0.5 on x axis, 0 on y axis, 0 on z axis
     glutPostRedisplay()
 
 def rotate_clockwise():
@@ -75,6 +77,7 @@ def display():
     elif shape == 'pl2':
         draw_rectangle()
 
+
     glFlush()
     glutSwapBuffers()
 
@@ -98,12 +101,21 @@ def menu_options(option):
         glutPostRedisplay()
     elif option == 6:
         translate_polygon()
-    elif option == 71:
-        pass
-    elif option == 72:
-        pass
-    elif option == 73:
-        pass
+    elif option == 7:
+        print("scale along x axis")
+        glMatrixMode(GL_MODELVIEW)
+        glScalef(1.5, 1.0, 1.0)
+        glutPostRedisplay()
+    elif option == 10:
+        print("scale along y axis")
+        glMatrixMode(GL_MODELVIEW)
+        glScalef(1.0, 1.5, 1.0)
+        glutPostRedisplay()
+    elif option == 11:
+        print("scale along z axis")
+        glMatrixMode(GL_MODELVIEW)
+        glScalef(1.0, 1.0, 1.5)
+        glutPostRedisplay()
     elif option == 8:
         rotate_clockwise()
     elif option == 9:
@@ -137,9 +149,9 @@ def main():
     glutAddMenuEntry("Point 1", 1)
     
     menu_scale_line = glutCreateMenu(menu_options)
-    glutAddMenuEntry("Along X Axis", 71)
-    glutAddMenuEntry("Along Y Axis", 72)
-    glutAddMenuEntry("Along Z Axis", 73)
+    glutAddMenuEntry("Along X Axis", 7)
+    glutAddMenuEntry("Along Y Axis", 10)
+    glutAddMenuEntry("Along Z Axis", 11)
 
     menu_draw = glutCreateMenu(menu_options)
     glutAddSubMenu("Point", menu_point)
@@ -155,7 +167,7 @@ def main():
     menu_right = glutCreateMenu(menu_options)
     glutAddSubMenu("Draw", menu_draw)
     glutAddSubMenu("Transform", menu_transform)
-    glutAttachMenu(GLUT_LEFT_BUTTON)
+    glutAttachMenu(GLUT_RIGHT_BUTTON)
 
     glutDisplayFunc(display)
 
